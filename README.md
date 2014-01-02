@@ -12,10 +12,28 @@ code compiles with kernels >=3.8.
 Confirmed to work on 3.12.0-7-generic (Ubuntu Saucy) w. XBMC and lirc.
 Documentation on this will be added to this repository.
 
+Quick install guide:
+
+<pre>
+# git clone https://github.com/sndrsmnk/hid-philips-asus.git
+# cd hid-philips-asus/src
+# make install
+# cat &gt;/etc/modprobe.d/hid-philips-asus.local &lt;&lt;EOT
+blacklist mceusb
+softdep usbhid pre: hid-philips-asus
+EOT
+# chmod 644 /etc/modprobe.d/hid-philips-asus.local
+# cat &gt;&gt;/etc/udev/rules.d/10-local.rules &lt;&lt;EOT
+KERNEL=="event\*",ATTRS{idVendor}=="0471",ATTRS{idProduct}=="206c",SYMLINK="input/irremote"
+EOT
+</pre>
+
+Either unload usbhid and reload it, or reboot. The device /dev/input/irremote
+should now always point to the eventN for the IR-receiver.
 
 
 
-Original README contents:
+Original, somewhat outdated README contents:
 
 =========================
 
