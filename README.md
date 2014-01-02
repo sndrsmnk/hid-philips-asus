@@ -1,16 +1,13 @@
 hid-philips-asus
 ================
 
-Import of a source tree for a 'hid-philips-asus.ko'-driver that enables the
-use of the "PHILIPS MCE USB IR Receiver- Spinel plusf0r ASUS" remote device
-with id 0471:206C in XBMC, for example.
+Import of a source tree for a 'hid-philips-asus.ko' kernel module that enables
+the use of the "PHILIPS MCE USB IR Receiver- Spinel plusf0r ASUS" infra red
+remote device with id 0471:206C in XBMC through the USB HID layer.
 
-This source tree was shipped with the hardware on a CD, if i recall correctly.
 It was imported as-is. There have been small tweaks to the Makefile so this
-code compiles with kernels >=3.8.
-
-Confirmed to work on 3.12.0-7-generic (Ubuntu Saucy) w. XBMC and lirc.
-Documentation on this will be added to this repository.
+code compiles with kernels >=3.8. It was confirmed to work with kernels
+3.12.0-7-generic (Ubuntu Saucy) and 3.11.0-14-generic (Ubuntu Raring).
 
 Quick install guide:
 
@@ -29,15 +26,23 @@ EOT
 
 cat &gt;&gt;/etc/udev/rules.d/10-local.rules &lt;&lt;EOT
 # Automatic symlink irremote to eventN device node.
-KERNEL=="event\*",ATTRS{idVendor}=="0471",ATTRS{idProduct}=="206c",SYMLINK="input/irremote"
+KERNEL=="event&#42;",ATTRS{idVendor}=="0471",ATTRS{idProduct}=="206c",SYMLINK="input/irremote"
 EOT
 
 chmod 644 /etc/modprobe.d/hid-philips-asus.local
 chmod 644 /etc/udev/rules.d/10-local.rules
-</pre>
 
-Either unload usbhid and reload it, or reboot. The device /dev/input/irremote
-should now always point to the eventN for the IR-receiver.
+# either unload mceusb and usbhid, and reload usbhid, or reboot at this point
+# ensure /dev/input/irremote exists afterwards
+
+rm -rf /etc/lircd/&#42;
+cp lircd/&#42; /etc/lircd/
+/etc/init.d/lircd stop
+/etc/init.d/lircd start
+
+irw
+# press buttons on remote, should show up on console.
+</pre>
 
 
 
