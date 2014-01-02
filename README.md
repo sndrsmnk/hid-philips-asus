@@ -20,7 +20,7 @@ git clone https://github.com/sndrsmnk/hid-philips-asus.git
 cd hid-philips-asus/src
 make install
 
-cat &gt;/etc/modprobe.d/hid-philips-asus.local &lt;&lt;EOT
+cat &gt;/etc/modprobe.d/hid-philips-asus-local.conf &lt;&lt;EOT
 # Module mceusb claims to support this device but doesnt
 blacklist mceusb
 # Module hid-philips-asus needs to be loaded before usbhid
