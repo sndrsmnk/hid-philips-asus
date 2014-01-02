@@ -15,17 +15,25 @@ Documentation on this will be added to this repository.
 Quick install guide:
 
 <pre>
-# git clone https://github.com/sndrsmnk/hid-philips-asus.git
-# cd hid-philips-asus/src
-# make install
-# cat &gt;/etc/modprobe.d/hid-philips-asus.local &lt;&lt;EOT
+git clone https://github.com/sndrsmnk/hid-philips-asus.git
+
+cd hid-philips-asus/src
+make install
+
+cat &gt;/etc/modprobe.d/hid-philips-asus.local &lt;&lt;EOT
+# Module mceusb claims to support this device but doesnt
 blacklist mceusb
+# Module hid-philips-asus needs to be loaded before usbhid
 softdep usbhid pre: hid-philips-asus
 EOT
-# chmod 644 /etc/modprobe.d/hid-philips-asus.local
-# cat &gt;&gt;/etc/udev/rules.d/10-local.rules &lt;&lt;EOT
+
+cat &gt;&gt;/etc/udev/rules.d/10-local.rules &lt;&lt;EOT
+# Automatic symlink irremote to eventN device node.
 KERNEL=="event\*",ATTRS{idVendor}=="0471",ATTRS{idProduct}=="206c",SYMLINK="input/irremote"
 EOT
+
+chmod 644 /etc/modprobe.d/hid-philips-asus.local
+chmod 644 /etc/udev/rules.d/10-local.rules
 </pre>
 
 Either unload usbhid and reload it, or reboot. The device /dev/input/irremote
