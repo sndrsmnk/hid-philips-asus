@@ -36,7 +36,7 @@ chmod 644 /etc/udev/rules.d/10-local.rules
 # ensure /dev/input/irremote exists afterwards
 
 rm -rf /etc/lirc/&#42;
-cp lirc/&#42; /etc/lirc/
+cp ../lirc/&#42; /etc/lirc/
 /etc/init.d/lirc stop
 /etc/init.d/lirc start
 
