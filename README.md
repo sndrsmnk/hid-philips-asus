@@ -42,6 +42,13 @@ cp ../lirc/&#42; /etc/lirc/
 
 irw
 # press buttons on remote, should show up on console.
+# control-c to quit
+
+# copy the contents of ../xbmc/ to your '.xbmc' data directory
+# the user that runs your xbmc process has this in its homedirectory
+cp -a ../xbmc/&#42; ~xbmc/.xbmc/
+
+# (re)start XBMC, it should Just Work
 </pre>
 
 
