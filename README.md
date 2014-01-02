@@ -35,10 +35,10 @@ chmod 644 /etc/udev/rules.d/10-local.rules
 # either unload mceusb and usbhid, and reload usbhid, or reboot at this point
 # ensure /dev/input/irremote exists afterwards
 
-rm -rf /etc/lircd/&#42;
-cp lircd/&#42; /etc/lircd/
-/etc/init.d/lircd stop
-/etc/init.d/lircd start
+rm -rf /etc/lirc/&#42;
+cp lirc/&#42; /etc/lirc/
+/etc/init.d/lirc stop
+/etc/init.d/lirc start
 
 irw
 # press buttons on remote, should show up on console.
