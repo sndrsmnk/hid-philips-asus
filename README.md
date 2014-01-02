@@ -51,9 +51,30 @@ cp -a ../xbmc/&#42; ~xbmc/.xbmc/
 # (re)start XBMC, it should Just Work
 </pre>
 
+### How can you tell it's working?
 
+When the device is plugged in, dmesg will show:
+<pre>
+usb 2-1: new low-speed USB device number 3 using uhci_hcd
+usb 2-1: New USB device found, idVendor=0471, idProduct=206c
+usb 2-1: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+usb 2-1: Product: MCE USB IR Receiver- Spinel plusf0r ASUS
+usb 2-1: Manufacturer: PHILIPS
+input: PHILIPS MCE USB IR Receiver- Spinel plusf0r ASUS as /devices/pci0000:00/0000:00:1d.0/usb2/2-1/2-1:1.0/input/input16
+philips_asus 0003:0471:206C.0002: input: USB HID v1.00 Keyboard [PHILIPS MCE USB IR Receiver- Spinel plusf0r ASUS] on usb-0000:00:1d.0-1/input0
+usbcore: registered new interface driver usbhid
+usbhid: USB HID core driver
+input: PHILIPS MCE USB IR Receiver- Spinel plusf0r ASUS (lircd bypass) as /devices/virtual/input/input17
+</pre>
 
-Original, somewhat outdated README contents:
+A symlink to the 'eventN'-node should exist:
+<pre>
+# ls -la /dev/input/{irremote,event7}
+crw-r----- 1 root root 13, 71 Jan  2 10:04 event7
+lrwxrwxrwx 1 root root      6 Jan  2 17:52 irremote -> event7
+</pre>
+
+### Original, somewhat outdated README below:
 
 =========================
 
