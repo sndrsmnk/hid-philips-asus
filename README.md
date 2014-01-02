@@ -115,7 +115,8 @@ crw-r----- 1 root root 13, 71 Jan  2 10:04 event7
 lrwxrwxrwx 1 root root      6 Jan  2 17:52 irremote -> event7
 </pre>
 
-### When XBMC starts, check dmesg again and look for:
+### When XBMC starts, look in dmesg:
+(this line may occur each time XBMC (re)connects to lircd, that's okay)
 <pre>
 input: PHILIPS MCE USB IR Receiver- Spinel plusf0r ASUS (lircd bypass) as /devices/virtual/input/inputNN
 </pre>
