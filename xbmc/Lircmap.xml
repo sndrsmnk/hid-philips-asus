@@ -1,0 +1,67 @@
+<!--
+This file contains the mapping of LIRC keys to XBMC keys used in
+keymaps/remote.xml. So, this file maps the remote control 'scan codes'
+or 'names' to "buttons" (function aliases) as defined in
+keymaps/remote.xml. This is also where the actual "button" gets its XBMC
+function assigned.
+
+
+Scancodes for each button on my remote (KEY_...):
+     POWER                    MUTE
+    REWIND     PLAYPAUSE   FASTFORWARD
+    PREVIOUS     STOP         NEXT
+
+    VOLUMEUP            VOLUMEDOWN
+                  UP
+        LEFT    ENTER    RIGHT
+                 DOWN
+
+    ESC                  BACKSPACE
+    PROGRAM       MENU        ZOOM
+     MEDIA                   INFO
+         LANGUAGE   SUBTITLE
+
+
+All supported <key>..</key> names ("buttons") from remote.xml:
+    back blue clear display down eight enter five forward four green
+    hash info left menu mute mymusic mypictures mytv myvideo nine one
+    pageminus pageplus pause play power record red reverse right select
+    seven six skipminus skipplus star start stop teletext three title
+    two up volumeminus volumeplus yellow zero
+
+(!)Not every button is mapped in this configuration.
+-->
+<lircmap>
+	<remote device="devinput">
+		<power>KEY_POWER</power>
+		<mute>KEY_MUTE</mute>
+
+		<reverse>KEY_REWIND</reverse>
+		<play>KEY_PLAYPAUSE</play>
+		<pause>KEY_PLAYPAUSE</pause>
+		<forward>KEY_FASTFORWARD</forward>
+
+		<skipminus>KEY_PREVIOUS</skipminus>
+		<stop>KEY_STOP</stop>
+		<skipplus>KEY_NEXT</skipplus>
+
+		<volumeplus>KEY_VOLUMEUP</volumeplus>
+		<volumeminus>KEY_VOLUMEDOWN</volumeminus>
+
+		<left>KEY_LEFT</left>
+		<up>KEY_UP</up>
+		<select>KEY_ENTER</select>
+		<down>KEY_DOWN</down>
+		<right>KEY_RIGHT</right>
+
+		<start>KEY_ESC</start>
+		<myvideo>KEY_PROGRAM</myvideo>
+		<!-- KEY_MEDIA -->
+		<!-- KEY_LANGUAGE -->
+		<subtitle>KEY_SUBTITLE</subtitle>
+		<info>KEY_INFO</info>
+		<!-- KEY_ZOOM -->
+		<back>KEY_BACKSPACE</back>
+		<title>KEY_MENU</title>
+	</remote>
+</lircmap>
