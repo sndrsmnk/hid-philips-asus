@@ -3,11 +3,11 @@ Upstream-Name: hid-philips-asus
 Upstream-Contact: Sander Smeenk <github@freshdot.net>
 Source: http://github.com/sndrsmnk/hid-philips-asus
 
-Files: *
-Copyright: 2016 Sander Smeenk <github@freshdot.net>
+Files: hid-philips-asus.c, mappings.h
+Copyright: 2010 Panagiotis Skintzos
 License: GPL-2.0
 
-Files: debian/*
+Files: *
 Copyright: 2016 Sander Smeenk <github@freshdot.net>
 License: GPL-2.0
 
