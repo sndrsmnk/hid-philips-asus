@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+VERSION=$(shell dpkg-parsechangelog | sed -rne 's,^Version: (.+)-.*,\1,p')
+
+%:
+	dh $@ --with dkms
+
+override_dh_auto_configure:
+override_dh_auto_build:
+override_dh_auto_test:
+override_dh_auto_install:
+override_dh_auto_clean:
+
+override_dh_dkms:
+	dh_install mappings.h hid-philips-asus.c Makefile usr/src/hid-philips-asus-$(VERSION)
+	dh_install contrib/modprobe_d_hid-philips-asus.conf etc/modprobe.d
+	dh_dkms -V $(VERSION)

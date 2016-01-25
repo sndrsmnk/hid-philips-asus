@@ -1,0 +1,16 @@
+Source: hid-philips-asus
+Section: kernel
+Priority: optional
+Maintainer: Sander Smeenk <github@freshdot.net>
+Build-Depends: debhelper (>= 9), dkms (>= 2.1.1.1)
+Standards-Version: 3.9.5
+Homepage: https://github.com/sndrsmnk/hid-philips-asus
+
+Package: hid-philips-asus
+Architecture: all
+Depends: ${misc:Depends}
+Description: USB HID driver for Philips Spinel plusf0r IR remotes
+ This kernel modules enables the use of all the buttons on the
+ "PHILIPS MCE USB IR Receiver- Spinel plusf0r ASUS" infra red
+ remote, through the USB IR receiver dongle identified by USB id
+ 0471:206c.
