@@ -5,14 +5,12 @@ Import of a source tree for a 'hid-philips-asus.ko' kernel module that enables
 the use of the "PHILIPS MCE USB IR Receiver- Spinel plusf0r ASUS" infra red
 remote device with id 0471:206C in XBMC through the USB HID layer.
 
-It was imported as-is. There have been small tweaks to the Makefile so this
-code compiles with kernels >=3.8. It was confirmed to work with kernel
-4.4.0-38-generic (Ubuntu Xenial).
+There have been small tweaks to the code so this compiles with kernels >=3.8
+and it is now a DKMS-package for Debian(-derivative) systems.
 
 
-
-Quick install guide:
---------------------
+Manual quick install guide:
+---------------------------
 
 You will need some build-essential tools installed, and the headers for your
 current running kernel:
@@ -28,6 +26,27 @@ git clone https://github.com/sndrsmnk/hid-philips-asus.git
 cd hid-philips-asus
 make all
 ```
+
+You must manually copy the resulting _hid-philips-asus.ko_ file to your
+kernel's _/lib/modules/$(uname -r)/updates/_ directory.
+
+
+Make debian package
+-------------------
+This codebase was intended to build a debian package that integrates with
+DKMS (Dynamic Kernel Module Support Framework) on Debian(-derivative) systems.
+
+To build the package, there's various ways to do so, one of which is:
+
+```sh
+apt-get install debhelper dkms fakeroot
+git clone https://github.com/sndrsmnk/hid-philips-asus.git
+cd hid-philips-asus
+fakeroot debian/rules binary
+```
+
+This should leave you with a package _../hid-philips-asus_20161024-1_all.deb_
+which you can _dpkg -i_ and have dkms build the module for your current kernel.
 
 
 mceusb
