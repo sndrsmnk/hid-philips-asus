@@ -62,7 +62,7 @@ udev device symlink
 To provide a stable device name for a possibly changing eventN device i'm telling udev to create a symlink:
 
 ```sh
-cat >>/etc/udev/rules.d/10-local.rules &lt;&lt;EOT
+cat >>/etc/udev/rules.d/10-local.rules <<EOT
 # Automatic symlink irremote to eventN device node.
 KERNEL=="event*",ATTRS{idVendor}=="0471",ATTRS{idProduct}=="206c",SYMLINK="input/irremote"
 EOT
