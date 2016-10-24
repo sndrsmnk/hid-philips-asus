@@ -42,7 +42,7 @@ loads, or it can't claim the device, so i'm adding a 'softdep'end on
 the usbhid module to preload hid-philips-asus:
 
 ```sh
-cat &gt;/etc/modprobe.d/hid-philips-asus-local.conf &lt;&lt;EOT
+cat >/etc/modprobe.d/hid-philips-asus-local.conf <<EOT
 # Place this file in /etc/modprobe.d/hid-philips-asus.conf
 #
 # Module mceusb claims to support this device but doesnt (fully).
@@ -62,9 +62,9 @@ udev device symlink
 To provide a stable device name for a possibly changing eventN device i'm telling udev to create a symlink:
 
 ```sh
-cat &gt;&gt;/etc/udev/rules.d/10-local.rules &lt;&lt;EOT
+cat >>/etc/udev/rules.d/10-local.rules &lt;&lt;EOT
 # Automatic symlink irremote to eventN device node.
-KERNEL=="event&#42;",ATTRS{idVendor}=="0471",ATTRS{idProduct}=="206c",SYMLINK="input/irremote"
+KERNEL=="event*",ATTRS{idVendor}=="0471",ATTRS{idProduct}=="206c",SYMLINK="input/irremote"
 EOT
 
 chmod 644 /etc/udev/rules.d/10-local.rules
@@ -83,7 +83,7 @@ apt-get install lirc
 
 mv /etc/lirc /etc/lirc.OLD
 mkdir /etc/lirc
-cp contrib/lirc/&#42; /etc/lirc/
+cp contrib/lirc/* /etc/lirc/
 
 /etc/init.d/lirc start
 ```
@@ -100,7 +100,7 @@ To enable a good set of functions, copy the XBMC configuration files:
 ```sh
 # copy the contents of ../xbmc/ to your '.xbmc' data directory
 # the user that runs your xbmc process has this in its homedirectory
-cp -a contrib/xbmc/&#42; ~xbmc/.xbmc/
+cp -a contrib/xbmc/* ~xbmc/.xbmc/
 
 # (re)start XBMC, it should Just Work
 ```
